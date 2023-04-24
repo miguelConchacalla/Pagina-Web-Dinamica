@@ -1,0 +1,79 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="col-md-4 offset-md-4">
+    <div class="card card-body">
+        <form action="/update/{{user.0}}" method="POST">
+            <div class="form-group">
+                <label for="">Edit your email: </label>
+                <input type="text" name="email" placeholder="user@gmail.com" value="{{user.1}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Edit your name: </label>
+                <input type="text" name="name" placeholder="Name" value="{{user.2}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Edit your lastname: </label>
+                <input type="text" name="lastname" placeholder="Lastname" value="{{user.3}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Edit your country: </label>
+                <input type="text" list="countries" name="country" placeholder="--Select--" value="{{user.4}}" class="form-control">
+                <datalist id="countries">
+                    <option value="United States">
+                    <option value="Madrid">
+                    <option value="France">
+                    <option value="Germany">
+                    <option value="Spain">
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label for="">Edit your postal code: </label>
+                <input type="text" name="postalcode" placeholder="101010" value="{{user.5}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Edit your work experience: </label>
+                <input type="text" list="workExperience" name="labexp" placeholder="labexp" value="{{user.6}}" class="form-control">
+                <datalist id="workExperience">
+                    <option value="Desarrollador web eCommerce Hays Response">
+                    <option value="Desarrollador SharePoint x25 Informatica">
+                    <option value="Asistente de Gestion de proyectos">
+                    <option value="Ingeniero of Infraestructura TI">
+                    <option value="Desarrollador de Aplicaciones Moviles">
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label for="">Edit your training: </label>
+                <input type="text" name="training" placeholder="training" value="{{user.7}}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Edit your language: </label>
+                <input type="text" list="languages" name="language" placeholder="language" value="{{user.8}}" class="form-control">
+                <datalist id="languages">
+                    <option value="English">
+                    <option value="Spanish">
+                    <option value="German">
+                    <option value="Chinese">
+                    <option value="Italian">
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label for="">Edit your skills: </label>
+                <input type="text" list="skill" name="skills" placeholder="skills" value="{{user.9}}" class="form-control">
+                <datalist id="skill">
+                    <option value="Multilingüismo">
+                    <option value="Resolución de problemas">
+                    <option value="Competencias digitales">
+                    <option value="Organización">
+                    <option value="Formación continua">
+                </datalist>
+            </div>
+            <div class="form-goup pt-3">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

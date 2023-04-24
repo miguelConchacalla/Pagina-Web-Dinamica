@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-5">
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="card card-body">
+            <form action="/add_user" method="POST">
+                <div class="form-group">
+                    <label for="">Email: </label>
+                    <input type="text" name="email" placeholder="user@gmail.com" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Name: </label>
+                    <input type="text" name="name" placeholder="Name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Lastname</label>
+                    <input type="text" name="lastname" placeholder="Lastname" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Country: </label>
+                    <input type="text" list="countries" name="country" placeholder="--Select--" class="form-control">
+                    <datalist id="countries">
+                        <option value="United States">
+                        <option value="Madrid">
+                        <option value="France">
+                        <option value="Germany">
+                        <option value="Spain">
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="">Code Postal: </label>
+                    <input type="text" name="postalcode" placeholder="101010" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Work Experience: </label>
+                    <input type="text" list="workExperience" name="labexp" placeholder="--Select--" class="form-control">
+                    <datalist id="workExperience">
+                        <option value="Desarrollador web eCommerce Hays Response">
+                        <option value="Desarrollador SharePoint x25 Informatica">
+                        <option value="Asistente de Gestion de proyectos">
+                        <option value="Ingeniero of Infraestructura TI">
+                        <option value="Desarrollador de Aplicaciones Moviles">
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="">Training: </label>
+                    <input type="text" name="training" placeholder="training" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Language: </label>
+                    <input type="text" list="languages" name="language" placeholder="--Select--" class="form-control">
+                    <datalist id="languages">
+                        <option value="English">
+                        <option value="Spanish">
+                        <option value="German">
+                        <option value="Chinese">
+                        <option value="Italian">
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <label for="">Skills: </label>
+                    <input type="text" list="skill" name="skills" placeholder="--Select--" class="form-control">
+                    <datalist id="skill">
+                        <option value="Multilingüismo">
+                        <option value="Resolución de problemas">
+                        <option value="Competencias digitales">
+                        <option value="Organización">
+                        <option value="Formación continua">
+                    </datalist>
+                </div>
+                <div class="form-group pt-3">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <table class="table table-striped table-bordered bg-white table-sm">
+            <thead>
+                <td>Email</td>
+                <td>Name</td>
+                <td>Lastname</td>
+                <td>Country</td>
+                <td>Postal Code</td>
+                <td>Work experience</td>
+                <td>Training</td>
+                <td>Language</td>
+                <td>Skills</td>
+                <td>Operations</td>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.1 }}</td>
+                        <td>{{ user.2 }}</td>
+                        <td>{{ user.3 }}</td>
+                        <td>{{ user.4 }}</td>
+                        <td>{{ user.5 }}</td>
+                        <td>{{ user.6 }}</td>
+                        <td>{{ user.7 }}</td>
+                        <td>{{ user.8 }}</td>
+                        <td>{{ user.9 }}</td>
+                        <td>
+                            <a href="/edit/{{user.0}}" class="btn btn-secondary">Edit</a>
+                            <a href="/delete/{{user.0}}" class="btn btn-danger btn-delete">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
